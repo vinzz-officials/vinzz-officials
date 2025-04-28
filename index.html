@@ -73,16 +73,44 @@
         margin-top: 20px;
     }
 
-    .tabs button {
-        background-color: #1e2a38;
-        color: white;
-        border: 2px solid #8a2be2;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
-        margin: 0 10px;
-    }
+    /* Add transition to tabs button */
+.tabs button {
+    background-color: #1e2a38;
+    color: white;
+    border: 2px solid #8a2be2;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition */
+}
+
+.tabs button:hover {
+    background-color: #1e2a38;
+    transform: scale(1.05);  /* Add hover effect for dynamic feel */
+}
+
+.tabs button.active {
+    background-color: #32cd32;
+    transform: scale(1.1);  /* Active state transition */
+}
+
+/* Smooth Animation for Tab Content with Slide Up */
+.tab-content {
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;  /* Extended transition time */
+    transform: translateY(50px);  /* Start from below for sliding effect */
+}
+
+.tab-content.active-tab {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);  /* Slide up to original position */
+}
 
     .tabs button:hover {
         background-color: #1e2a38;
@@ -237,18 +265,30 @@
 </footer>
 
 <script>
-    function openTab(tabName) {
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(content => content.classList.remove('active-tab'));
+    function openTab(tabName, element) {
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabButtons = document.querySelectorAll('.tabs button');
 
-        const tabButtons = document.querySelectorAll('.tabs button');
-     tabButtons.forEach(button => button.classList.remove('active'));
+    // Remove active tab and reset animations
+    tabContents.forEach(content => {
+        content.classList.remove('active-tab');
+        content.style.opacity = "0";  
+        content.style.transform = "translateY(50px)";  /* Reset the position to below */
+    });
 
-        // Menampilkan konten tab yang sesuai
-        document.getElementById(tabName).classList.add('active-tab');
-        // Menandai tombol yang aktif
-        event.target.classList.add('active');
-    }
+    // Remove active state from all buttons
+    tabButtons.forEach(button => button.classList.remove('active'));
+
+    // Set the selected tab as active and trigger animation
+    const selectedTab = document.getElementById(tabName);
+    selectedTab.classList.add('active-tab');
+    setTimeout(() => {
+        selectedTab.style.opacity = "1";  
+        selectedTab.style.transform = "translateY(0)";  /* Slide up the selected tab */
+    }, 100);  // Slight delay for smooth transition
+
+    element.classList.add('active');
+}
 </script>
 
 </body>
