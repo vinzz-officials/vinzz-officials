@@ -1,295 +1,277 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinzz Official Store</title>
-    <style>
-        /* Basic Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #101820;
-            color: white;
-        }header {
-        background-color: #1e2a38;
-        text-align: center;
-        padding: 30px;
-        font-size: 2.5em;
-        font-weight: bold;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinzz Official Store</title>
+  <style>
+    /* Basic Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #101820;
+      color: white;
     }
-
+    header {
+      background-color: #1e2a38;
+      text-align: center;
+      padding: 30px;
+      font-size: 2.5em;
+      font-weight: bold;
+      animation: fadeIn 1s ease-out;
+    }
     .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        padding: 20px;
-        gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+      gap: 20px;
     }
-
     .product {
-        background-color: #1e2a38;
-        border-radius: 10px;
-        padding: 15px;
-        width: 200px;
-        text-align: center;
-        transition: transform 0.3s ease-in-out;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #1e2a38;
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
     .product:hover {
-        transform: scale(1.05);
+      transform: scale(1.05);
     }
-
     .product img {
-        width: 100%;
-        border-radius: 10px;
+      width: 100%;
+      border-radius: 10px;
     }
-
     .product h3 {
-        margin: 15px 0;
+      margin: 15px 0;
     }
-
     .product button {
-        background-color: #32cd32;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
-        width: 100%;
-        box-sizing: border-box;
+      background-color: #32cd32;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
     }
-
     .product button:hover {
-        background-color: #228b22;
+      background-color: #228b22;
     }
-
-    /* Tab Styles */
+    /* Tabs */
     .tabs {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      background-color: #101820;
+      padding: 10px 0;
     }
-
-    /* Add transition to tabs button */
-.tabs button {
-    background-color: #1e2a38;
-    color: white;
-    border: 2px solid #8a2be2;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin: 0 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition */
-}
-
-.tabs button:hover {
-    background-color: #1e2a38;
-    transform: scale(1.05);  /* Add hover effect for dynamic feel */
-}
-
-.tabs button.active {
-    background-color: #32cd32;
-    transform: scale(1.1);  /* Active state transition */
-}
-
-/* Smooth Animation for Tab Content with Slide Up */
-.tab-content {
-    display: none;
-    text-align: center;
-    margin-top: 30px;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;  /* Extended transition time */
-    transform: translateY(50px);  /* Start from below for sliding effect */
-}
-
-.tab-content.active-tab {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);  /* Slide up to original position */
-}
-
+    .tabs button {
+      background-color: #1e2a38;
+      color: white;
+      border: 2px solid #8a2be2;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      margin: 0 10px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+    }
     .tabs button:hover {
-        background-color: #1e2a38;
-        transition: background-color 0.3s;
+      background-color: #1e2a38;
+      transform: scale(1.05);
     }
-
     .tabs button.active {
-        background-color: #32cd32;
+      background-color: #32cd32;
+      transform: scale(1.1);
     }
-
+    /* Tab content */
     .tab-content {
-        display: none;
-        text-align: center;
-        margin-top: 30px;
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+      transform: translateY(50px);
     }
-
     .tab-content.active-tab {
-        display: block;
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
-
     .benefit {
-        margin-top: 30px;
-        font-size: 1.5em;
+      margin-top: 30px;
+      font-size: 1.5em;
     }
-
     /* Animation for header */
     @keyframes fadeIn {
-        0% { opacity: 0; transform: translateY(-50px); }
-        100% { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-
-    header {
-        animation: fadeIn 1s ease-out;
-    }
-
     footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #1e2a38;
-        color: white;
+      text-align: center;
+      padding: 20px;
+      background-color: #1e2a38;
+      color: white;
     }
-</style>
-
+    a {
+      color: #32cd32;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        Welcome to Vinzz Official Store
-    </header><div class="tabs">
-    <button class="active" onclick="openTab('products')">List Produk</button>
-    <button onclick="openTab('benefits')">Keuntungan</button>
-    <button onclick="openTab('special')">Special Produk</button>
-    <button onclick="openTab('contact')">Kontak</button>
-</div>
+  <header>Welcome to Vinzz Official Store</header>
 
-<div id="products" class="tab-content active-tab">
+  <div class="tabs">
+    <button class="active" onclick="openTab('products', this)">List Produk</button>
+    <button onclick="openTab('benefits', this)">Keuntungan</button>
+    <button onclick="openTab('special', this)">Special Produk</button>
+    <button onclick="openTab('contact', this)">Kontak</button>
+    <button onclick="openTab('support', this)">Support Me</button>
+  </div>
+
+  <!-- Produk -->
+  <div id="products" class="tab-content active-tab">
     <div class="container">
-        <!-- 1GB to UNLI RAM Products -->
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="1GB RAM">
-            <h3>1GB RAM | 1K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%201GB%20RAM%20Rp1K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="2GB RAM">
-            <h3>2GB RAM | 2K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%202GB%20RAM%20Rp2K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="3GB RAM">
-            <h3>3GB RAM | 3K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%203GB%20RAM%20Rp3K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="4GB RAM">
-            <h3>4GB RAM | 4K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%204GB%20RAM%20Rp4K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="5GB RAM">
-            <h3>5GB RAM | 5K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%205GB%20RAM%20Rp5K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="6GB RAM">
-            <h3>6GB RAM | 6K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%206GB%20RAM%20Rp6K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="7GB RAM">
-            <h3>7GB RAM | 7K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%207GB%20RAM%20Rp7K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="8GB RAM">
-            <h3>8GB RAM | 8K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%208GB%20RAM%20Rp8K'">Beli</button>
-        </div>
-        <div class="product">
-            <img src="https://files.catbox.moe/k4g6oe.jpg" alt="UNLI RAM">
-            <h3>UNLI RAM | 10K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20UNLI%20RAM%20Rp10K'">Beli</button>
-        </div>
+      <!-- 1GB to UNLI RAM Products -->
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="1GB RAM">
+        <h3>1GB RAM | 1K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%201GB%20RAM%20Rp1K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="2GB RAM">
+        <h3>2GB RAM | 2K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%202GB%20RAM%20Rp2K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="3GB RAM">
+        <h3>3GB RAM | 3K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%203GB%20RAM%20Rp3K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="4GB RAM">
+        <h3>4GB RAM | 4K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%204GB%20RAM%20Rp4K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="5GB RAM">
+        <h3>5GB RAM | 5K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%205GB%20RAM%20Rp5K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="6GB RAM">
+        <h3>6GB RAM | 6K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%206GB%20RAM%20Rp6K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="7GB RAM">
+        <h3>7GB RAM | 7K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%207GB%20RAM%20Rp7K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="8GB RAM">
+        <h3>8GB RAM | 8K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%208GB%20RAM%20Rp8K'">Beli</button>
+      </div>
+      <div class="product">
+        <img src="https://files.catbox.moe/k4g6oe.jpg" alt="UNLI RAM">
+        <h3>UNLI RAM | 10K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20UNLI%20RAM%20Rp10K'">Beli</button>
+      </div>
     </div>
-</div>
+  </div>
 
-<div id="benefits" class="tab-content">
+  <!-- Benefits -->
+  <div id="benefits" class="tab-content">
     <div class="benefit">
-        <h2>Keuntungan Panel:</h2>
-        <ul>
-            <li>Bisa buat bot pushkontak</li>
-            <li>Pasang bot sepuasnya</li>
-            <li>All script masuk tanpa batas</li>
-            <li>Panel fast, aman, dan stabil</li>
-            <li>Anti curi script meskipun panel public</li>
-            <li>Bisa pasang bot jaga grup 24 jam</li>
-            <li>Bisa pasang bot bug</li>
-        </ul>
+      <h2>Keuntungan Panel:</h2>
+      <ul>
+        <li>Bisa buat bot pushkontak</li>
+        <li>Pasang bot sepuasnya</li>
+        <li>All script masuk tanpa batas</li>
+        <li>Panel fast, aman, dan stabil</li>
+        <li>Anti curi script meskipun panel public</li>
+        <li>Bisa pasang bot jaga grup 24 jam</li>
+        <li>Bisa pasang bot bug</li>
+      </ul>
     </div>
-</div>
+  </div>
 
-<div id="special" class="tab-content">
+  <!-- Special Produk -->
+  <div id="special" class="tab-content">
     <div class="container">
-        <!-- Special Produk -->
-        <div class="product">
-            <h3>Reseller Panel | 7K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Reseller%20Panel%20Rp7K'">Beli</button>
-        </div>
-        <div class="product">
-            <h3>Admin Panel | 10K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Admin%20Panel%20Rp10K'">Beli</button>
-        </div>
-        <div class="product">
-            <h3>Pt Panel | 15K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Pt%20Panel%20Rp15K'">Beli</button>
-        </div>
-        <div class="product">
-            <h3>Owner Panel | 20K</h3>
-            <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Owner%20Panel%20Rp20K'">Beli</button>
-        </div>
+      <div class="product">
+        <h3>Reseller Panel | 7K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Reseller%20Panel%20Rp7K'">Beli</button>
+      </div>
+      <div class="product">
+        <h3>Admin Panel | 10K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Admin%20Panel%20Rp10K'">Beli</button>
+      </div>
+      <div class="product">
+        <h3>Pt Panel | 15K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Pt%20Panel%20Rp15K'">Beli</button>
+      </div>
+      <div class="product">
+        <h3>Owner Panel | 20K</h3>
+        <button onclick="window.location.href='https://wa.me/6283197848916?text=BANG%20MAU%20Beli%20Owner%20Panel%20Rp20K'">Beli</button>
+      </div>
     </div>
-</div>
+  </div>
 
-<div id="contact" class="tab-content">
+  <!-- Kontak -->
+  <div id="contact" class="tab-content">
     <div class="container">
-        <h3>Kontak Kami</h3>
-        <p>Hubungi kami via WhatsApp: <a href="https://wa.me/6283197848916" style="color: #32cd32;">Klik untuk chat</a></p>
+      <h3>Kontak Kami</h3>
+      <p>Hubungi kami via WhatsApp: <a href="https://wa.me/6283197848916" target="_blank">Klik untuk chat</a></p>
     </div>
-</div>
+  </div>
 
-<footer>
+  <!-- Support Me -->
+  <div id="support" class="tab-content">
+    <div class="container">
+      <h3>Support Me</h3>
+      <p><a href="https://chat.whatsapp.com/LNFSaXKVJ1C4OkzUPyn221" target="_blank">Join Grup WhatsApp</a></p>
+      <p><a href="https://whatsapp.com/channel/0029Vb64E4SAe5VssrragU0y" target="_blank">Ikuti Channel WhatsApp</a></p>
+    </div>
+  </div>
+
+  <footer>
     <p>© Vinzz Official⚡</p>
-</footer>
+  </footer>
 
-<script>
+  <script>
     function openTab(tabName, element) {
-    const tabContents = document.querySelectorAll('.tab-content');
-    const tabButtons = document.querySelectorAll('.tabs button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      const tabButtons = document.querySelectorAll('.tabs button');
 
-    // Remove active tab and reset animations
-    tabContents.forEach(content => {
+      tabContents.forEach(content => {
         content.classList.remove('active-tab');
-        content.style.opacity = "0";  
-        content.style.transform = "translateY(50px)";  /* Reset the position to below */
-    });
+        content.style.opacity = "0";
+        content.style.transform = "translateY(50px)";
+      });
 
-    // Remove active state from all buttons
-    tabButtons.forEach(button => button.classList.remove('active'));
+      tabButtons.forEach(button => button.classList.remove('active'));
 
-    // Set the selected tab as active and trigger animation
-    const selectedTab = document.getElementById(tabName);
-    selectedTab.classList.add('active-tab');
-    setTimeout(() => {
-        selectedTab.style.opacity = "1";  
-        selectedTab.style.transform = "translateY(0)";  /* Slide up the selected tab */
-    }, 100);  // Slight delay for smooth transition
+      const selectedTab = document.getElementById(tabName);
+      selectedTab.classList.add('active-tab');
+      setTimeout(() => {
+        selectedTab.style.opacity = "1";
+        selectedTab.style.transform = "translateY(0)";
+      }, 100);
 
-    element.classList.add('active');
-}
-</script>
+      element.classList.add('active');
+    }
+  </script>
 
 </body>
     </html>
