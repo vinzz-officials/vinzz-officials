@@ -114,7 +114,27 @@ body {
       margin-top: 30px;
       font-size: 1.5em;
     }
-    /* Animation for header */
+  @keyframes slideUp {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(50px); }
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.showing {
+  animation: slideUp 0.6s ease-in-out;
+}
+
+.tab-content.hiding {
+  animation: slideDown 0.6s ease-in-out;
+}
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(-50px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -131,4 +151,4 @@ body {
     }
     a:hover {
       text-decoration: underline;
-}
+            }
